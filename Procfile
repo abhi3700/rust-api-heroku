@@ -1,1 +1,1 @@
-web: $PORT ./target/release/rust-api-heroku
+web: PORT=$PORT ./target/release/rust-api-heroku
