@@ -4,6 +4,9 @@ use axum::{routing::get, Router};
 
 #[tokio::main]
 async fn main() {
+    dotenv::dotenv().ok();
+    let port = std::env::var("PORT").expect("Failed to get the PORT env var.");
+
     // depend on tracing for all sorts of logging
     tracing_subscriber::fmt().init();
 
@@ -13,7 +16,7 @@ async fn main() {
         .route("/greet/", get(|| async { "Hey! glad to have you here!" }));
 
     // define the TCP listener
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:19699")
+    let listener = tokio::net::TcpListener::bind(&format!("127.0.0.1:{port}"))
         .await
         .unwrap();
 
