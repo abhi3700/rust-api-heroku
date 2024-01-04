@@ -10,7 +10,7 @@ This is a simple API written in Rust using the Axum framework. It is deployed on
 2. Login to Heroku: `heroku login`
 3. After creating the git repo with the required code & PORT is parametrized so that Heroku can assign a port to it.
 4. Create a Heroku app: `heroku create`. I would recommend to also add buildpacks for the app. For Rust, it is `emk/rust`. Do like this: `heroku create --buildpack emk/rust`. This will create a Heroku app with the specified buildpack. If throws error, then just create the app and add the buildpack in the next step.
-5. Create a buildpack: `heroku buildpacks:set emk/rust` for an existing application. For a new application, it can be specified while creating the app: `heroku create --buildpack emk/rust`.
+5. Create a buildpack: `heroku buildpacks:set emk/rust` for an existing application. For a new application, it can be specified while creating the app: `heroku create --buildpack emk/rust`. [Repo](https://github.com/emk/heroku-buildpack-rust).
 6. Verify info: `heroku info`
 7. Add heroku remote to git: `heroku git:remote -a <app-name>`. E.g. `heroku git:remote -a rust-api-heroku`
 8. Add Procfile: `web: ./target/release/rust-api-heroku`. `PORT=$PORT` is not required as it is already set by the Heroku. Just need to set the `.env` & configure the code to use the env vars using `dotenv` crate & `std::env::var` function.
