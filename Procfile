@@ -1,0 +1,1 @@
+web: AXUM_PORT=$PORT ./target/release/rust-api-heroku
