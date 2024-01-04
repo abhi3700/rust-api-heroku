@@ -16,7 +16,7 @@ async fn main() {
         .route("/greet/", get(|| async { "Hey! glad to have you here!" }));
 
     // define the TCP listener
-    let listener = tokio::net::TcpListener::bind(&format!("127.0.0.1:{port}"))
+    let listener = tokio::net::TcpListener::bind(&format!("0.0.0.1:{port}"))
         .await
         .unwrap();
 
